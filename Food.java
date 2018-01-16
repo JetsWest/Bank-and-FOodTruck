@@ -1,9 +1,11 @@
 package foodtrucka;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Food {
-    private ArrayList<Food> foods;
+    private List<Food> foods = new ArrayList<>();
+
     
     public static final int unknown = 0;
     public static final int hamburger = 10;
