@@ -149,6 +149,8 @@ public class Cashier {
     }
 
     public static void addInventory(){
+        boolean addingInv = true;
+        while (addingInv){
         System.out.println("What food would you like to add to the inventory?");
         System.out.println("1) Hamburgers");
         System.out.println("2) Cheeseburgers");
@@ -160,9 +162,18 @@ public class Cashier {
         int dab = input.nextInt();
         System.out.println("How many of the item?");
         int dab2 = input.nextInt();
-        System.out.println("Added " + dab2 + foodtruck.addFoods(dab, dab2) + " to the inventory.");
+        System.out.println("Added " + dab2 + " items to the inventory.");
+        foodtruck.addFoods(dab2, dab);
+        addingInv = false;
+        if (dab > 7 || dab < 1){
+            System.out.println("Sorry, that is not an option.");
+        }
+        if (!addingInv){
+            general();
+        }
+        }
     }
-    public static void main(String[] args){
+    public static void general(){
         System.out.println("Hello customer! Welcome to Jackson's Food Truck."
                 + "What would you like to do?");
         System.out.println("1) Place an Order");
@@ -199,5 +210,8 @@ public class Cashier {
                 break;
             }
         }
+    }
+    public static void main(String[] args){
+        general();
     }
 }
