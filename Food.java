@@ -3,25 +3,40 @@ package foodtrucka;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodTruckA {
-    private List<Food> inventory = new ArrayList<>();
+public class Food {
+    public static final int UNKNOWN = 0;
+    public static final int HAMBURGER = 3;
+    public static final int CHEESEBURGER = 3;
+    public static final int HOTDOG = 4;
+    public static final int SODA = 4;
+    public static final int CHEESIEBOY = 200;
+    public static final int WATER = 10;
+    public static final int YEET = 2;
+
+    private double price;
+    private int type;
+    public int balance;
     
-    public void addFood(int type){
-        this.inventory.add(new Food(type));
-    }
-    public void removeFood(int type){
-        this.inventory.remove(new Food(type));
-    }
-    public void addFoods(int amount, int type){
-        for (int i = 0; i < amount; i++){
-            this.inventory.add(new Food(type));
+    public Food(int type){
+        if(type==HAMBURGER){
+            this.price = 3.00;
+        }else if(type==CHEESEBURGER){
+            this.price = 3.50;
+        }else if(type==HOTDOG){
+            this.price = 4.00;
+        }else if(type==SODA){
+            this.price = 4.00;
+        }else if(type==CHEESIEBOY){
+            this.price = 200.00;
+        }else if(type==WATER){
+            this.price =10;
+        }else if(type==YEET){
+            this.price = 2;
+        }else{
+            this.price = 0.00;
+            this.type = UNKNOWN;
         }
     }
-    public void removeFoods(int amount, int type){
-        for (int i = 0; i < amount; i++){
-            this.inventory.remove(new Food(type));
-        }
-    }
-    public int countFood(int type){}
-    public static void removeAll(int type){}
+
+
 }
