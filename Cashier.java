@@ -1,12 +1,12 @@
-
 package foodtrucka;
 import java.util.Scanner;
 public class Cashier {
     private static Scanner input = new Scanner(System.in);
     private static FoodTruckA foodtruck = new FoodTruckA();
-    private static double balance = 0.00;
+    private static double balance = 100.00;
     
     public static void placeOrder(){
+        foodtruck.startingInv();
         System.out.println("What food would you like to order?");
         System.out.println("1) Hamburger");
         System.out.println("2) Cheeseburger");
@@ -101,6 +101,7 @@ public class Cashier {
                 
             default:
                 System.out.println("We do not have that menu item!");
+                general();
             break;
         }
             System.out.println("Would you like to order anything else? 1) Yes 2) No");
@@ -110,6 +111,7 @@ public class Cashier {
             }
             if (finalboy == 2){
                 System.out.println("Thank you, please come again!");
+                general();
             }
             if (finalboy > 2 || finalboy < 1){
                 System.out.println("That is not an available option.");
@@ -127,9 +129,11 @@ public class Cashier {
         System.out.println("6) Water");
         System.out.println("7) Yeets");
         int cool = input.nextInt();
-        System.out.println("We currently have " + foodtruck.checkCertainFood(cool) + cool);
+        System.out.println("We currently have " + foodtruck.checkCertainFood(cool) + " of that item.");
+        general();
         if (cool > 7 || cool < 1){
             System.out.println("That choice does not exist sorry!");
+            general();
         }
     }
     public static void menu(){
@@ -142,10 +146,11 @@ public class Cashier {
         System.out.println("Water costs $10 (Very special)");
         System.out.println("One yeet is $2");
         System.out.println("-------------------------------");
-        placeOrder();
+        general();
     }
     public static void checkMoney(){
         System.out.println("The food truck currently has $" + foodtruck.checkBalance());
+        general();
     }
 
     public static void addInventory(){
