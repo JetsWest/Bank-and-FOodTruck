@@ -7,11 +7,16 @@ import java.util.Collections;
 
 public class FoodTruckA {
     private List<Food> inventory = new ArrayList<>();
-    private double balance = 0;
+    private double balance = 100.00;
     
     public void startingInv(){
-        //NEED TO ADD 10 OF EACH FOOD TO STARTING INVENTORY
-        
+        addFoods(10, Food.HAMBURGER);
+        addFoods(10, Food.CHEESEBURGER);
+        addFoods(10, Food.HOTDOG);
+        addFoods(10, Food.SODA);
+        addFoods(10, Food.CHEESIEBOY);
+        addFoods(10, Food.WATER);
+        addFoods(10, Food.YEET);
     }
     public void addFood(int type){
         this.inventory.add(new Food(type));
@@ -30,7 +35,6 @@ public class FoodTruckA {
             this.inventory.remove(new Food(type));
         }
     }
-
     public int checkCertainFood(int type){
         return Collections.frequency(inventory, type);
     }
