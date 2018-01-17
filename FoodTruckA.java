@@ -9,6 +9,10 @@ public class FoodTruckA {
     private List<Food> inventory = new ArrayList<>();
     private double balance = 0;
     
+    public void startingInv(){
+        //NEED TO ADD 10 OF EACH FOOD TO STARTING INVENTORY
+        
+    }
     public void addFood(int type){
         this.inventory.add(new Food(type));
     }
