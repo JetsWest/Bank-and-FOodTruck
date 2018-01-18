@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Food {
-    public static final int UNKNOWN = 0;
+    public static final int UNKNOWN = -1;
     public static final int HAMBURGER = 3;
     public static final int CHEESEBURGER = 3;
     public static final int HOTDOG = 4;
@@ -29,14 +29,18 @@ public class Food {
         }else if(type==CHEESIEBOY){
             this.price = 200.00;
         }else if(type==WATER){
-            this.price =10;
+            this.price =10.00;
         }else if(type==YEET){
-            this.price = 2;
+            this.price = 2.00;
         }else{
             this.price = 0.00;
             this.type = UNKNOWN;
         }
     }
-
-
+    public double getPrice(int type){
+        return this.price;
+    }
+    public double getType(){
+        return this.type;
+    }
 }
