@@ -6,7 +6,7 @@ import java.util.Collections;
 
 
 public class FoodTruckA {
-    private List<Food> inventory = new ArrayList<>();
+    private final List<Food> inventory = new ArrayList<>();
     private double balance = 100.00;
     
     public void startingInv(){
@@ -28,7 +28,7 @@ public class FoodTruckA {
         for (int i = 0; i < amount; i++){
             this.inventory.add(new Food(type));
         }
-        return Collections.frequency(inventory, type);
+        return checkCertainFood(type);
     }
     public void removeFoods(int amount, int type){
         for (int i = 0; i < amount; i++){
@@ -36,7 +36,13 @@ public class FoodTruckA {
         }
     }
     public int checkCertainFood(int type){
-        return Collections.frequency(inventory, type);
+        int count = 0;
+        for (int i = 0; i < inventory.size(); i++){
+            if (inventory.get(i).getType() == type){
+                count++;
+            }
+        }
+        return count;
     }
     public void removeAll(int type){
         inventory.clear();
