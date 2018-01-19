@@ -2,8 +2,6 @@ package foodtrucka;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
-
 
 public class FoodTruckA {
     private final List<Food> inventory = new ArrayList<>();
