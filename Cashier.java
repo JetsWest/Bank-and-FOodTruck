@@ -5,7 +5,7 @@ public class Cashier {
     private static FoodTruckA foodtruck = new FoodTruckA();
     private static double balance = 100.00;
 
-    
+   
     public static void placeOrder(){
         System.out.println("What food would you like to order?");
         System.out.println("1) Hamburger");
