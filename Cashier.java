@@ -4,9 +4,9 @@ public class Cashier {
     private static Scanner input = new Scanner(System.in);
     private static FoodTruckA foodtruck = new FoodTruckA();
     private static double balance = 100.00;
+
     
     public static void placeOrder(){
-        foodtruck.startingInv();
         System.out.println("What food would you like to order?");
         System.out.println("1) Hamburger");
         System.out.println("2) Cheeseburger");
@@ -22,8 +22,8 @@ public class Cashier {
             case "1":
                 System.out.println("How many hamburgers would you like to order?");
                 int hamburger = input.nextInt();
-                if (hamburger < foodtruck.checkCertainFood(Food.HAMBURGER)){
-                    System.out.println("Your hamburgers will cost " + (hamburger*Food.HAMBURGER));
+                if (hamburger <= foodtruck.checkCertainFood(Food.HAMBURGER)){
+                    System.out.println("Your hamburgers will cost $" + (hamburger*Food.HAMBURGER));
                     foodtruck.removeFoods(Food.HAMBURGER, hamburger);
                     foodtruck.takeMoney(Food.HAMBURGER*hamburger);
                 }
@@ -35,66 +35,66 @@ public class Cashier {
             case "2":
                 System.out.println("How many cheeseburgers would you like to order?");
                 int cheeseburger = input.nextInt();
-                if (cheeseburger < foodtruck.checkCertainFood(Food.CHEESEBURGER)){
-                    System.out.println("Your cheeseburgers will cost " + (cheeseburger*Food.CHEESEBURGER));
+                if (cheeseburger <= foodtruck.checkCertainFood(Food.CHEESEBURGER)){
+                    System.out.println("Your cheeseburgers will cost $" + (cheeseburger*Food.CHEESEBURGER));
                     foodtruck.removeFoods(Food.CHEESEBURGER, cheeseburger);
                     foodtruck.takeMoney(Food.CHEESEBURGER*cheeseburger);
-                }else if (cheeseburger > foodtruck.checkCertainFood(Food.CHEESEBURGER)){
+                }else if (cheeseburger >= foodtruck.checkCertainFood(Food.CHEESEBURGER)){
                     System.out.println("Sorry, we do not have enough of that food.");
                 }
             break;
             case "3":
                 System.out.println("How many hotdogs would you like to order?");
                 int hotdog = input.nextInt();
-                if (hotdog < foodtruck.checkCertainFood(Food.HOTDOG)){
-                    System.out.println("Your hotdogs will cost " + (hotdog*Food.HOTDOG));
+                if (hotdog <= foodtruck.checkCertainFood(Food.HOTDOG)){
+                    System.out.println("Your hotdogs will cost $" + (hotdog*Food.HOTDOG));
                     foodtruck.removeFoods(Food.HOTDOG, hotdog);
                     foodtruck.takeMoney(Food.HOTDOG*hotdog);
-                }else if (hotdog > foodtruck.checkCertainFood(Food.HOTDOG)){
+                }else if (hotdog >= foodtruck.checkCertainFood(Food.HOTDOG)){
                     System.out.println("Sorry, we do not have enough of that food.");
                 }
             break;
             case "4":
                 System.out.println("How many sodas would you like to order?");
                 int soda = input.nextInt();
-                if (soda < foodtruck.checkCertainFood(Food.SODA)){
-                    System.out.println("Your sodas will cost " + (soda*Food.SODA));
+                if (soda <= foodtruck.checkCertainFood(Food.SODA)){
+                    System.out.println("Your sodas will cost $" + (soda*Food.SODA));
                     foodtruck.removeFoods(Food.SODA, soda);
                     foodtruck.takeMoney(Food.SODA*soda);
-                }else if (soda > foodtruck.checkCertainFood(Food.SODA)){
+                }else if (soda >= foodtruck.checkCertainFood(Food.SODA)){
                     System.out.println("Sorry, we do not have enough of that food.");
                 }
             break;
             case "5":
                 System.out.println("How many cheesieboys would you like to order?");
                 int cheesieboy = input.nextInt();
-                if (cheesieboy < foodtruck.checkCertainFood(Food.CHEESIEBOY)){
-                    System.out.println("Your cheesieboys will cost " + (cheesieboy*Food.CHEESIEBOY));
+                if (cheesieboy <= foodtruck.checkCertainFood(Food.CHEESIEBOY)){
+                    System.out.println("Your cheesieboys will cost $" + (cheesieboy*Food.CHEESIEBOY));
                     foodtruck.removeFoods(Food.CHEESIEBOY, cheesieboy);
                     foodtruck.takeMoney(Food.CHEESIEBOY*cheesieboy);
-                }else if (cheesieboy > foodtruck.checkCertainFood(Food.CHEESIEBOY)){
+                }else if (cheesieboy >= foodtruck.checkCertainFood(Food.CHEESIEBOY)){
                     System.out.println("Sorry, we do not have enough of that food.");
                 }
             break;
             case "6":
                 System.out.println("How many waters would you like to order?");
                 int water = input.nextInt();
-                if (water < foodtruck.checkCertainFood(Food.WATER)) {
-                    System.out.println("Your waters will cost " + (water * Food.WATER));
+                if (water <= foodtruck.checkCertainFood(Food.WATER)) {
+                    System.out.println("Your waters will cost $" + (water * Food.WATER));
                     foodtruck.removeFoods(Food.WATER, water);
                     foodtruck.takeMoney(Food.WATER * water);
-                } else if (water > foodtruck.checkCertainFood(Food.WATER)) {
+                } else if (water >= foodtruck.checkCertainFood(Food.WATER)) {
                     System.out.println("Sorry, we do not have enough of that food.");
                 }
             break;
             case "7":
                 System.out.println("How many yeets would you like to order?");
                 int yeet = input.nextInt();
-                if (yeet < foodtruck.checkCertainFood(Food.YEET)) {
-                    System.out.println("Your yeets will cost " + (yeet * Food.YEET));
+                if (yeet <= foodtruck.checkCertainFood(Food.YEET)) {
+                    System.out.println("Your yeets will cost $" + (yeet * Food.YEET));
                     foodtruck.removeFoods(Food.YEET, yeet);
                     foodtruck.takeMoney(Food.YEET * yeet);
-                } else if (yeet > foodtruck.checkCertainFood(Food.YEET)) {
+                } else if (yeet >= foodtruck.checkCertainFood(Food.YEET)) {
                     System.out.println("Sorry, we do not have enough of that food.");
                 }
             break;
@@ -119,7 +119,7 @@ public class Cashier {
         }
     }
 
-    public static void checkCertainFood(){
+    public static void checkInv(){
         System.out.println("What food would you like to check?");
         System.out.println("1) Hamburgers");
         System.out.println("2) Cheeseburgers");
@@ -139,7 +139,7 @@ public class Cashier {
     public static void menu(){
         System.out.println("------THE MENU OF DESTINY------");
         System.out.println("Hamburger is $3");
-        System.out.println("Cheesburger is $3");
+        System.out.println("Cheesburger is $5");
         System.out.println("Hotdog is $4");
         System.out.println("Soda is $4");
         System.out.println("Our house special, Cheesieboy is $200");
@@ -153,31 +153,6 @@ public class Cashier {
         general();
     }
 
-    public static void addInventory(){
-        boolean addingInv = true;
-        while (addingInv){
-        System.out.println("What food would you like to add to the inventory?");
-        System.out.println("1) Hamburgers");
-        System.out.println("2) Cheeseburgers");
-        System.out.println("3) Hot dogs");
-        System.out.println("4) Sodas");
-        System.out.println("5) Cheesieboys");
-        System.out.println("6) Water");
-        System.out.println("7) Yeets");
-        int dab = input.nextInt();
-        System.out.println("How many of the item?");
-        int dab2 = input.nextInt();
-        System.out.println("Added " + dab2 + " items to the inventory.");
-        foodtruck.addFoods(dab2, dab);
-        addingInv = false;
-        if (dab > 7 || dab < 1){
-            System.out.println("Sorry, that is not an option.");
-        }
-        if (!addingInv){
-            general();
-        }
-        }
-    }
     public static void general(){
         System.out.println("Hello customer! Welcome to Jackson's Food Truck."
                 + "What would you like to do?");
@@ -185,7 +160,6 @@ public class Cashier {
         System.out.println("2) Check inventory of a certian item on the Food Truck");
         System.out.println("3) Look at the Menu and the Prices");
         System.out.println("4) Check the Food Truck money");
-        System.out.println("5) Add food to the inventory");
         String choice = input.next();
         boolean choosing = true;
         while(choosing){
@@ -195,7 +169,7 @@ public class Cashier {
                 break;
                 
                 case "2":
-                    checkCertainFood();
+                    checkInv();
                 break;
                 
                 case "3":
@@ -205,11 +179,7 @@ public class Cashier {
                 case "4":
                     checkMoney();
                 break;
-                
-                case "5":
-                    addInventory();
-                break;
-                
+
                 default:
                     System.out.println("Sorry, that is not an option.");
                 break;
@@ -217,6 +187,7 @@ public class Cashier {
         }
     }
     public static void main(String[] args){
+        foodtruck.startingInv();
         general();
     }
 } 
