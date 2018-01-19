@@ -36,11 +36,15 @@ public class FoodTruckA {
     public int checkCertainFood(int type){
         int count = 0;
         for (int i = 0; i < inventory.size(); i++){
-            if (inventory.get(i).getType() == type){
+            if (inventory.get(i).equals(type)){
                 count++;
             }
         }
         return count;
+    }
+
+    public Food[] checkInventory(){
+        return this.inventory.toArray(new Food[] {});
     }
     public void removeAll(int type){
         inventory.clear();
