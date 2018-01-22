@@ -24,7 +24,7 @@ public class Cashier {
                 int hamburger = input.nextInt();
                 if (hamburger <= foodtruck.checkCertainFood(Food.HAMBURGER)){
                     System.out.println("Your hamburgers will cost $" + (hamburger*Food.HAMBURGER));
-                    foodtruck.removeFoods(Food.HAMBURGER, hamburger);
+                    foodtruck.removeFoods(1, hamburger);
                     foodtruck.takeMoney(Food.HAMBURGER*hamburger);
                 }
                 
@@ -37,7 +37,7 @@ public class Cashier {
                 int cheeseburger = input.nextInt();
                 if (cheeseburger <= foodtruck.checkCertainFood(Food.CHEESEBURGER)){
                     System.out.println("Your cheeseburgers will cost $" + (cheeseburger*Food.CHEESEBURGER));
-                    foodtruck.removeFoods(Food.CHEESEBURGER, cheeseburger);
+                    foodtruck.removeFoods(2, cheeseburger);
                     foodtruck.takeMoney(Food.CHEESEBURGER*cheeseburger);
                 }else if (cheeseburger >= foodtruck.checkCertainFood(Food.CHEESEBURGER)){
                     System.out.println("Sorry, we do not have enough of that food.");
@@ -48,7 +48,7 @@ public class Cashier {
                 int hotdog = input.nextInt();
                 if (hotdog <= foodtruck.checkCertainFood(Food.HOTDOG)){
                     System.out.println("Your hotdogs will cost $" + (hotdog*Food.HOTDOG));
-                    foodtruck.removeFoods(Food.HOTDOG, hotdog);
+                    foodtruck.removeFoods(3, hotdog);
                     foodtruck.takeMoney(Food.HOTDOG*hotdog);
                 }else if (hotdog >= foodtruck.checkCertainFood(Food.HOTDOG)){
                     System.out.println("Sorry, we do not have enough of that food.");
@@ -59,7 +59,7 @@ public class Cashier {
                 int soda = input.nextInt();
                 if (soda <= foodtruck.checkCertainFood(Food.SODA)){
                     System.out.println("Your sodas will cost $" + (soda*Food.SODA));
-                    foodtruck.removeFoods(Food.SODA, soda);
+                    foodtruck.removeFoods(4, soda);
                     foodtruck.takeMoney(Food.SODA*soda);
                 }else if (soda >= foodtruck.checkCertainFood(Food.SODA)){
                     System.out.println("Sorry, we do not have enough of that food.");
@@ -70,7 +70,7 @@ public class Cashier {
                 int cheesieboy = input.nextInt();
                 if (cheesieboy <= foodtruck.checkCertainFood(Food.CHEESIEBOY)){
                     System.out.println("Your cheesieboys will cost $" + (cheesieboy*Food.CHEESIEBOY));
-                    foodtruck.removeFoods(Food.CHEESIEBOY, cheesieboy);
+                    foodtruck.removeFoods(5, cheesieboy);
                     foodtruck.takeMoney(Food.CHEESIEBOY*cheesieboy);
                 }else if (cheesieboy >= foodtruck.checkCertainFood(Food.CHEESIEBOY)){
                     System.out.println("Sorry, we do not have enough of that food.");
@@ -81,7 +81,7 @@ public class Cashier {
                 int water = input.nextInt();
                 if (water <= foodtruck.checkCertainFood(Food.WATER)) {
                     System.out.println("Your waters will cost $" + (water * Food.WATER));
-                    foodtruck.removeFoods(Food.WATER, water);
+                    foodtruck.removeFoods(6, water);
                     foodtruck.takeMoney(Food.WATER * water);
                 } else if (water >= foodtruck.checkCertainFood(Food.WATER)) {
                     System.out.println("Sorry, we do not have enough of that food.");
@@ -92,7 +92,7 @@ public class Cashier {
                 int yeet = input.nextInt();
                 if (yeet <= foodtruck.checkCertainFood(Food.YEET)) {
                     System.out.println("Your yeets will cost $" + (yeet * Food.YEET));
-                    foodtruck.removeFoods(Food.YEET, yeet);
+                    foodtruck.removeFoods(7, yeet);
                     foodtruck.takeMoney(Food.YEET * yeet);
                 } else if (yeet >= foodtruck.checkCertainFood(Food.YEET)) {
                     System.out.println("Sorry, we do not have enough of that food.");
