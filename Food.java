@@ -12,7 +12,7 @@ public class Food {
     public static final int CHEESIEBOY = 200;
     public static final int WATER = 10;
     public static final int YEET = 2;
-
+    private static final double[] prices = new double[]{3.0,5.0,4.0,7.0,200.0,10.0,2.0};
     private double price;
     private int type;
     public int balance;
@@ -44,7 +44,7 @@ public class Food {
             this.type = UNKNOWN;
         }
     }
-    public double getPrice(int type){
+    public double getPrice(){
         return this.price;
     }
     public int getType(){
