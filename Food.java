@@ -44,10 +44,11 @@ public class Food {
             this.type = UNKNOWN;
         }
     }
-    public double getPrice(){
+    public double getPrice(int type){
         return this.price;
     }
     public int getType(){
         return this.type;
     }
+
 }
