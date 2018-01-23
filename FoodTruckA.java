@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FoodTruckA {
     private final List<Food> inventory = new ArrayList<>();
-    private double balance = 100.00;
+    private double balance = 100000.00;
     
     public void startingInv(){
         addFoods(10, Food.HAMBURGER);
@@ -56,6 +56,10 @@ public class FoodTruckA {
     }
     public void takeMoney(int price){
         this.balance += price;
+    }
+    public double setMarkup(double set){
+        double markup = set;
+        return markup;
     }
 
 }
