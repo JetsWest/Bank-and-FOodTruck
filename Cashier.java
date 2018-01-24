@@ -4,21 +4,56 @@ import java.util.ArrayList;
 public class Cashier {
     private static Scanner input = new Scanner(System.in);
     public static FoodTruckA foodtruck = new FoodTruckA();
-    private static double balance = 100.00;
+    public static int typer;
+    public static Food food = new Food(typer);
     
     public static void initialize(){
         ArrayList<Food> order = new ArrayList<>();
-        for (int type = Food.HAMBURGER; type <=Food.YEET;type++){
+        for (int type = 1; type < 7;type++){
             for (int count = 1; count <= 10; count++){
                 order.add(new Food(type));
             }
         }
-        double cost = 0;
+        double cost = 0.0;
         for(Food food:order){
             cost += food.getPrice();
         }
         foodtruck.takeMoney(cost);
         foodtruck.restock(order);
+    }
+    public static void orderMenu(){
+        System.out.println("1)Hamburger - $" + foodtruck.getMarkup() * food.prices[0]);
+        System.out.println("2)Cheesburger - $" + foodtruck.getMarkup() * food.prices[1]);
+        System.out.println("3)Hotdog - $" + foodtruck.getMarkup() * food.prices[2]);
+        System.out.println("4)Soda - $" + foodtruck.getMarkup() * food.prices[3]);
+        System.out.println("5)Cheesieboy - $" + foodtruck.getMarkup() * food.prices[4]);
+        System.out.println("6) Water - $" + foodtruck.getMarkup() * food.prices[5]);
+        System.out.println("7)Yeet - $" + foodtruck.getMarkup() * food.prices[6]);
+        System.out.println("8)Done");
+    }
+    //not finished yetttttttt
+    public static void testOrder(){
+        orderMenu();
+        int subtotal = 0;
+        ArrayList<Food> order = new ArrayList<>();
+        boolean chooser = true;
+        System.out.println("Please make a choice of order:");
+        int customer = input.nextInt();
+        while(chooser){
+        if (customer != 8){
+            order.add(new Food(customer));
+            subtotal += (foodtruck.getMarkup()*food.prices[customer-1]);
+
+            break;
+        }
+        if (customer == 8){
+            System.out.println("This will cost $" + subtotal);
+            foodtruck.fulfillOrder(order);
+            foodtruck.takeMoney(subtotal);
+            general();
+            }
+        }
+        
     }
     public static void placeOrder(){
         System.out.println("What food would you like to order?");
@@ -37,7 +72,7 @@ public class Cashier {
                 System.out.println("How many hamburgers would you like to order?");
                 int hamburger = input.nextInt();
                 if (hamburger <= foodtruck.checkCertainFood(Food.HAMBURGER)){
-                    System.out.println("Your hamburgers will cost $" + (hamburger*Food.HAMBURGER));
+                    System.out.println("Your hamburgers will cost $" + (hamburger*(foodtruck.getMarkup()*Food.HAMBURGER)));
                     foodtruck.removeFoods(1, hamburger);
                     foodtruck.takeMoney(Food.HAMBURGER*hamburger);
                 }
@@ -105,7 +140,7 @@ public class Cashier {
                 System.out.println("How many yeets would you like to order?");
                 int yeet = input.nextInt();
                 if (yeet <= foodtruck.checkCertainFood(Food.YEET)) {
-                    System.out.println("Your yeets will cost $" + (yeet * Food.YEET));
+                    System.out.println("Your yeets will cost $" + (yeet*Food.YEET));
                     foodtruck.removeFoods(7, yeet);
                     foodtruck.takeMoney(Food.YEET * yeet);
                 } else if (yeet >= foodtruck.checkCertainFood(Food.YEET)) {
@@ -152,13 +187,13 @@ public class Cashier {
     }
     public static void menu(){
         System.out.println("------THE MENU OF DESTINY------");
-        System.out.println("Hamburger is $3");
-        System.out.println("Cheesburger is $5");
-        System.out.println("Hotdog is $4");
-        System.out.println("Soda is $7");
-        System.out.println("Our house special, Cheesieboy is $200");
-        System.out.println("Water costs $10 (Very special)");
-        System.out.println("One yeet is $2");
+        System.out.println("Hamburger is $" + foodtruck.getMarkup()*Food.HAMBURGER);
+        System.out.println("Cheesburger is $" + foodtruck.getMarkup()*Food.CHEESEBURGER);
+        System.out.println("Hotdog is $" + foodtruck.getMarkup()*Food.HOTDOG);
+        System.out.println("Soda is $" + foodtruck.getMarkup()*Food.HOTDOG);
+        System.out.println("Our house special, Cheesieboy is $" + foodtruck.getMarkup()*Food.CHEESIEBOY);
+        System.out.println("Water costs $" + foodtruck.getMarkup()*Food.WATER + " (Very special)");
+        System.out.println("One yeet is $" + foodtruck.getMarkup()*Food.YEET);
         System.out.println("-------------------------------");
         general();
     }
@@ -171,18 +206,20 @@ public class Cashier {
         System.out.println("1) Restock the inventory");
         System.out.println("2) Check the food truck balance");
         System.out.println("3) Set the markup");
-        System.out.println("4) Go back to the customer menu");
+        System.out.println("4) Check the inventory of an item");
+        System.out.println("5) Go back to the customer menu");
         String choice = input.next();
         boolean choosing = true;
         while(choosing){
             switch(choice){
                 case "1":
-                    System.out.println("What food would you like to add?");
+                    System.out.println("What food would you like to add? ");
+                    System.out.println("1) Hamburger; 2) Cheeseburger; 3) Hotdog; 4) Soda; 5) Cheesieboy; 6) Water; 7) Yeet");
                     int cool = input.nextInt();
                     System.out.println("What quantity?");
                     int quant = input.nextInt();
                     foodtruck.addFoods(quant, cool);
-                    System.out.println("Added " + quant + "food.");
+                    System.out.println("Added " + quant + " food to the inventory.");
                     general();
                 break;
                 case "2":
@@ -195,7 +232,11 @@ public class Cashier {
                     foodtruck.setMarkup(markup);
                     System.out.println("The markup is now " + foodtruck.setMarkup(markup));
                     general();
+                break;
                 case "4":
+                    checkInv();
+                break;
+                case "5":
                     general();
                 break;
                 default:
@@ -208,26 +249,21 @@ public class Cashier {
         System.out.println("Hello customer! Welcome to Jackson's Food Truck."
                 + "What would you like to do?");
         System.out.println("1) Place an Order");
-        System.out.println("2) Check inventory of a certian item on the Food Truck");
-        System.out.println("3) Look at the Menu and the Prices");
-        System.out.println("4) Owner menu");
+        System.out.println("2) Look at the Menu and the Prices");
+        System.out.println("3) Owner menu");
         String choice = input.next();
         boolean choosing = true;
         while(choosing){
             switch(choice){
                 case "1":
-                    placeOrder();
+                    testOrder();
                 break;
                 
                 case "2":
-                    checkInv();
-                break;
-                
-                case "3":
                     menu();
                 break;
 
-                case "4":
+                case "3":
                     owner();
                 break;
                 
